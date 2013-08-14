@@ -1,0 +1,119 @@
+@mixin clearfix() {
+	*zoom: 1;
+	&:before,
+	&:after {
+		display: table;
+		content: '';
+		line-height: 0;
+	}
+
+	&:after {
+		clear: both;
+	}
+}
+
+// 
+// CSS3 Madres
+// 
+@mixin rounded($vert, $horz, $radius: 5px) {
+	border-#{$vert}-#{$horz}-radius: $radius;
+	-moz-border-radius-#{$vert}#{$horz}: $radius;
+	-webkit-border-#{$vert}-#{$horz}-radius: $radius;
+}
+@mixin border-radius($radius: 5px) {
+	-webkit-border-radius: $radius;
+	   -moz-border-radius: $radius;
+	        border-radius: $radius;
+}
+@mixin box-shadow($args...) {
+	-webkit-box-shadow: $args;
+	   -moz-box-shadow: $args;
+	        box-shadow: $args;
+}
+@mixin box-sizing($arg) {
+	-webkit-box-sizing: $arg;
+	   -moz-box-sizing: $arg;
+	        box-sizing: $arg;
+}
+@mixin transition($args...) {
+	-webkit-transition: $args;
+	   -moz-transition: $args;
+	     -o-transition: $args;
+	        transition: $args;
+}
+@mixin transition-transform($duration, $timingfn, $delay: 0) {
+	-webkit-transition: -webkit-transform $duration $timingfn $delay;
+	   -moz-transition: -moz-transform $duration $timingfn $delay;
+	     -o-transition: -o-transform $duration $timingfn $delay;
+	        transition: transform $duration $timingfn $delay;
+}
+@mixin scale($ratio) {
+	-webkit-transform: scale($ratio);
+	   -moz-transform: scale($ratio);
+	    -ms-transform: scale($ratio);
+	     -o-transform: scale($ratio);
+	     	transform: scale($ratio);
+}
+@mixin rotate($angle) {
+	-webkit-transform: rotate($angle);
+	   -moz-transform: rotate($angle);
+	    -ms-transform: rotate($angle);
+	     -o-transform: rotate($angle);
+	     	transform: rotate($angle);
+}
+
+//
+// Gradients
+//
+@mixin vertical-gradient($start, $stop) {
+	$ie-start: ie_hex_str($start);
+	$ie-stop:  ie_hex_str($stop);
+
+	//background-color: mix($start, $stop, 60%);
+	background-color: $stop;
+	background-color: transparent;
+	background-image: -moz-linear-gradient(top, $start, $stop); // FF 3.6+
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from($start), to($stop)); // Safari 4+, Chrome 2+
+    background-image: -webkit-linear-gradient(top, $start, $stop); // Safari 5.1+, Chrome 10+
+    background-image: -o-linear-gradient(top, $start, $stop); // Opera 11.10
+    background-image: linear-gradient(to bottom, $start, $stop); // Standard, IE10
+    background-repeat: repeat-x;
+	filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$ie-start}', EndColorStr='#{$ie-stop}', GradientType=0)"; // IE9 para abajo
+}
+@mixin horizontal-gradient($start, $stop) {
+	$ie-start: ie_hex_str($start);
+	$ie-stop:  ie_hex_str($stop);
+
+	background-color: $stop;
+	background-color: transparent;
+    background-image: -moz-linear-gradient(left, $start, $stop); // FF 3.6+
+    background-image: -webkit-gradient(linear, 0 0, 100% 0, from($start), to($stop)); // Safari 4+, Chrome 2+
+    background-image: -webkit-linear-gradient(left, $start, $stop); // Safari 5.1+, Chrome 10+
+    background-image: -o-linear-gradient(left, $start, $stop); // Opera 11.10
+    background-image: linear-gradient(to right, $start, $stop); // Standard, IE10
+    background-repeat: repeat-x;
+    filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$ie-start}', EndColorStr='#{$ie-stop}', GradientType=1)"; // IE9 para abajo
+}
+@mixin gradient-bar($start, $stop, $textColor, $textShadow) {
+	color: $textColor;
+	text-shadow: $textShadow;
+
+	@include vertical-gradient($start, $stop);
+	border-color: $stop $stop darken($stop, 15%);
+}
+
+
+
+// 
+// Puto IE puto
+// 
+@mixin ie7-inline-block {
+	*display: inline;
+	*zoom: 1;
+}
+@mixin ie7-restore-left-whitespace {
+	*margin-left: 0.3em;
+	&:first-child {
+		*margin-left: 0;
+	}
+}
