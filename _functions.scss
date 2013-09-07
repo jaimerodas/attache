@@ -61,6 +61,11 @@
 	     -o-transform: rotate($angle);
 	     	transform: rotate($angle);
 }
+@mixin user-select($tipo: none) {
+	-webkit-user-select: $tipo;
+	   -moz-user-select: $tipo;
+	    -ms-user-select: $tipo;
+}
 
 //
 // Gradients
