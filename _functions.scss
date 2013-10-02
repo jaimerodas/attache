@@ -20,6 +20,14 @@
 	-moz-border-radius-#{$vert}#{$horz}: $radius;
 	-webkit-border-#{$vert}-#{$horz}-radius: $radius;
 }
+@mixin round-top($radius: 5px) {
+	@include rounded(top, left, $radius);
+	@include rounded(top, right, $radius);
+}
+@mixin round-bottom($radius: 5px) {
+	@include rounded(bottom, left, $radius);
+	@include rounded(bottom, right, $radius);
+}
 @mixin border-radius($radius: 5px) {
 	-webkit-border-radius: $radius;
 	   -moz-border-radius: $radius;
