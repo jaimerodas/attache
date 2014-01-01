@@ -74,6 +74,29 @@
 	    -ms-user-select: $tipo;
 }
 
+@mixin display-flex {
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: flex;
+}
+
+@mixin flex-flow($direction...) {
+	-webkit-flex-flow: $direction;
+	   -moz-flex-flow: $direction;
+	        flex-flow: $direction;
+}
+
+@mixin flex($args...) {
+	-webkit-flex: $args;
+	   -moz-flex: $args;
+	        flex: $args;
+}
+
+@mixin align-content($position) {
+	-webkit-align-content: $position;
+	        align-content: $position;
+}
+
 //
 // Gradients
 //
