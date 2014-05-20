@@ -68,6 +68,20 @@
 	     -o-transform: rotate($angle);
 	     	transform: rotate($angle);
 }
+@mixin translate($args...) {
+	-webkit-transform: translate($args);
+	   -moz-transform: translate($args);
+	    -ms-transform: translate($args);
+	     -o-transform: translate($args);
+	     	transform: translate($args);
+}
+@mixin filter($args...) {
+	-webkit-filter: $args;
+	   -moz-filter: $args;
+	    -ms-filter: $args;
+	     -o-filter: $args;
+	     	filter: $args;
+}
 @mixin user-select($tipo: none) {
 	-webkit-user-select: $tipo;
 	   -moz-user-select: $tipo;
